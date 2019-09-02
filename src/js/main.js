@@ -1,3 +1,8 @@
-import { Title } from './components/Title'
 
-Title('Hello, GULP');
+
+import Counter from './Counter'
+
+const counter = new Counter(document.getElementById('counter'));
+
+
+
