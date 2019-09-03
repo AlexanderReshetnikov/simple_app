@@ -8,9 +8,11 @@ export default class Counter{
     }
 
     buildView(container){
+        const root_element = document.createElement('div')
+        root_element.classList.add('counter')
+
         const display = document.createElement('h3')
-        display.classList.add('counter__display')
-        
+        display.classList.add('counter__display')        
         
         const row = document.createElement('div')
         row.classList.add('counter__row')
@@ -20,16 +22,38 @@ export default class Counter{
 
         btnPlus.classList.add('counter__btn')
         btnMinus.classList.add('counter__btn')
-        btnPlus.innerText = 'Up'
-        btnMinus.innerText = 'Down'
+        btnPlus.innerText = '+'
+        btnMinus.innerText = '-'
 
         btnPlus.addEventListener('click', () => {this.plus(display)} )
         btnMinus.addEventListener('click', () => {this.minus(display)} )
 
         row.appendChild(btnPlus)
         row.appendChild(btnMinus)
-        container.appendChild(display)
-        container.appendChild(row)
+        root_element.appendChild(display)
+        root_element.appendChild(row)
+
+        
+        //start|stop buttons
+        const row_second = document.createElement('div')
+        row_second.classList.add('counter__row')
+
+        const btnStartTimer = document.createElement('button')
+        const btnStopTimer = document.createElement('button')
+
+        btnStartTimer.classList.add('counter__btn')
+        btnStopTimer.classList.add('counter__btn')
+        btnStartTimer.innerText = '>'
+        btnStopTimer.innerText = 'II'
+
+        btnStartTimer.addEventListener('click', () => {this.timerStart(display)} )
+        btnStopTimer.addEventListener('click', () => {this.timerStop()} )
+
+        row_second.appendChild(btnStartTimer)
+        row_second.appendChild(btnStopTimer)
+
+        root_element.appendChild(row_second)
+        container.appendChild(root_element)
 
     }
     
@@ -43,10 +67,10 @@ export default class Counter{
         display.innerText = this.count
     }
 
-    timerStart(){
+    timerStart(display){
         this.timer = setInterval(() => {
             this.count++
-            this.display.innerText = this.count
+            display.innerText = this.count
         }, 1000)
 
     }

@@ -2,3 +2,32 @@
     font-size: 70px;
     color: $color;
 }
+
+.counter {
+    max-width: 130px;
+    text-align: center;
+    border: 1px solid #000;
+    &__display{
+        height: 34px;
+        width: 100%;
+        font-size: 32px;
+        text-align: center;
+        margin-block-start: 0.4em;
+        margin-block-end: 0.4em;        
+    }
+    &__row{
+        button{
+            margin: 2px;
+            width: 32px;
+            height: 28px;
+            background-color: #008CBA;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid #008CBA;;
+            border-radius: 5px;
+            text-align: center;            
+        }
+        display: block;
+    }
+}
