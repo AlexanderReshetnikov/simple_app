@@ -2,8 +2,7 @@ export default class Counter{
     constructor(container){
         this.count = 0
         this.timer = null
-        this.state = 0 //0 stopped, 1 runned
-
+        
         this.buildView(container)
     }
 
@@ -58,19 +57,21 @@ export default class Counter{
     }
     
     plus(display){
+        //console.log(this.timer) 
         this.count++
         display.innerText = this.count
     }
 
     minus (display){
+        //console.log(this.timer) 
         this.count--
         display.innerText = this.count
     }
 
-    timerStart(display){        
-        if(this.state == 0)
-        {
-            this.state = 1
+    timerStart(display){ 
+        //console.log(this.timer)         
+        if(this.timer < 1)
+        {            
             this.timer = setInterval(() => {
                 this.count++
                 display.innerText = this.count
@@ -78,8 +79,9 @@ export default class Counter{
         }    
     }
 
-    timerStop () {        
-        this.state = 0
+    timerStop () {
+        //console.log(this.timer) 
         clearInterval (this.timer)
+        this.timer = null
     }
 }
