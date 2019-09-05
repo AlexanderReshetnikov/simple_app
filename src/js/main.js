@@ -1,10 +1,14 @@
 
 
-import Counter from './Counter'
+import Counter from './components/Counter'
 
-const counter = new Counter(document.getElementById('counter'));
-const counterHeader = new Counter(document.getElementById('counter'));
-const counterFooter = new Counter(document.getElementById('footer'));
+import {BaseButton, PrettyButton, FunctionalButton} from './components/Buttons'
 
+const baseBtn = new BaseButton('footer', 'base')
+baseBtn.render()
 
+const prettyBtn = new PrettyButton('footer', 'pretty', 'pretty-btn')
+prettyBtn.render()
 
+const funcBtn = new FunctionalButton('footer', 'best', 'pretty-btn', ()=>{alert('da')})
+funcBtn.render()
