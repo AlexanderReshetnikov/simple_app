@@ -1,7 +1,7 @@
 import BaseButton from '../BaseButton'
 
 export default class PrettyBytton extends BaseButton{
-    constructor(containerId, value, className){
+    constructor(containerId = '', value = '', className = 'pretty-btn'){
         super(containerId, value)
         this.className = className
     }
