@@ -7,15 +7,12 @@ body {
     li {
         list-style-type: none;
     }
-    .square{
-        width: 200px;
-        height: 200px;
-        margin: 20px;
-        background-color: blueviolet;
-        transition: all .5s;
+    .todo {
+
     }
-    .square-soft{
-        border-radius: 15px;
+
+    .todo-close {
+        text-decoration: line-through;
     }
 
  

@@ -1,34 +1,37 @@
-import $ from 'jQuery';
+import $ from 'jQuery'
+
+import todoService from './TodoService'
+
+import {
+    inputTodo,
+    todoList,
+    todoItem,
+    btnAddTodo
+} from './constants'
+
+function renderTodoList(list, container){
+    container.html('')
+
+    list.map((todo, id) => {
+        const todoComponent = todoItem(todo, id)
+        container.html(container.html() + todoComponent)
+    })
+
+    $('button[data-type="status"]').click((e) => {
+        const id = $(e.currentTarget).attr('data-id')
+        const status = $(e.currentTarget).attr('data-status') === 'open' ? 'close' : 'open'
+
+        renderTodoList(todoService.changeTodo(id, status), container)
+
+    })
+
+    $('button[data-type="remove"]').click((e) => {
+        const id = $(e.currentTarget).attr('data-id')
+
+        renderTodoList(todoService.removeTodo(id), container)
+    })
+}
 
 $(document).ready(() => {
-    $('#title').text('hello, jQuery');
-    $('li a').text('tag li');
-
-    const square = $('#square');
-    const btnSquare = $('#btn-square');
-    btnSquare.click(() => {
-        square.toggleClass('square-soft');
-    })
-
-    square.mouseenter(function () {
-        $(this).css({
-            'background-color' : 'black',
-            'border-radius': '40px'
-        })
-        btnSquare.css({
-            'width': '200px'
-        })
-    })
-    square.mouseleave(
-        function () {
-            $(this).css({
-                'background-color' : 'blueviolet',
-                'border-radius': '0px'
-            })
-            btnSquare.css({
-                'width': 'initial'
-            })
-        }
-    )
-
+    renderTodoList(todoService.todoList, todoList)
 })
