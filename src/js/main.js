@@ -34,4 +34,27 @@ function renderTodoList(list, container){
 
 $(document).ready(() => {
     renderTodoList(todoService.todoList, todoList)
+
+    btnAddTodo.click(() => {
+        
+        if(inputTodo.val() === ''){
+            alert('в поле todo пусто')
+            return
+        }
+        
+        if($('.todo').map(function(){
+            return this.innerHTML
+        }).toArray().indexOf(inputTodo.val()) > -1){
+            alert('такой todo уже есть')
+            return
+        }
+
+
+        var new_tdItem = {
+            description: inputTodo.val(),
+            status: 'open'
+        }
+
+        renderTodoList(todoService.addTodo(new_tdItem), todoList)
+    })
 })
